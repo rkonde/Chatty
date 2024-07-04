@@ -1,14 +1,18 @@
 import { auth } from "@/config/firebase";
 import useAuth from "@/hooks/useAuth";
+import { Redirect } from "expo-router";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
 import { Button, Text, View } from "react-native";
+import "../global.css";
 
 export default function StartingPage() {
   const { user } = useAuth();
+
+  return <Redirect href="/signIn" />;
 
   return (
     <View className="flex-1 justify-center">

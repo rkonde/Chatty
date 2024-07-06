@@ -1,50 +1,17 @@
-import { auth } from "@/config/firebase";
-import useAuth from "@/hooks/useAuth";
-import { Redirect } from "expo-router";
-import {
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
-} from "firebase/auth";
-import { Button, Text, View } from "react-native";
+import Navigation from "@/navigation/Navigation";
+import { NavigationContainer } from "@react-navigation/native";
+import { StatusBar } from "expo-status-bar";
+import { SafeAreaView } from "react-native";
+
 import "../global.css";
 
 export default function StartingPage() {
-  const { user } = useAuth();
-
-  return <Redirect href="/signIn" />;
-
   return (
-    <View className="flex-1 justify-center">
-      <Button
-        title="Register"
-        onPress={async () => {
-          try {
-            const result = await createUserWithEmailAndPassword(
-              auth,
-              "konradr97@gmail.com",
-              "test1234!"
-            );
-
-            console.log(result);
-          } catch (error) {
-            console.log(error);
-          }
-        }}
-      />
-      <Button
-        title="Sign in"
-        onPress={() => {
-          signInWithEmailAndPassword(auth, "konradr97@gmail.com", "test1234!");
-        }}
-      />
-      <Text>{user?.email}</Text>
-      <Button
-        title="Sign out"
-        onPress={() => {
-          signOut(auth);
-        }}
-      />
-    </View>
+    <NavigationContainer independent={true}>
+      <SafeAreaView className="flex-1">
+        <StatusBar style="dark" />
+        <Navigation />
+      </SafeAreaView>
+    </NavigationContainer>
   );
 }

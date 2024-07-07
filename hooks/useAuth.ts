@@ -71,6 +71,10 @@ export default function useAuth() {
     }
   };
 
+  const signOut = async () => {
+    await auth.signOut();
+  };
+
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (user) => {
       console.log("got user: ", user);
@@ -86,5 +90,5 @@ export default function useAuth() {
     return unsub;
   }, []);
 
-  return { user, signIn, signUp };
+  return { user, signIn, signUp, signOut };
 }

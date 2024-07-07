@@ -1,9 +1,8 @@
 import KeyboardView from "@/components/ui/KeyboardView";
 import Loading from "@/components/ui/Loading";
-import { auth } from "@/config/firebase";
+import useAuth from "@/hooks/useAuth";
 import { Octicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import { signInWithEmailAndPassword } from "firebase/auth";
 import { useRef, useState } from "react";
 import {
   Alert,
@@ -22,22 +21,22 @@ export default function SignIn() {
   const emailRef = useRef("");
   const passwordRef = useRef("");
 
+  const { signIn } = useAuth();
+
   const handleSignIn = async () => {
+    setLoading(true);
+
     if (!emailRef.current || !passwordRef.current) {
       Alert.alert("Sign in", "Please fill in all fields");
     }
 
-    try {
-      const result = await signInWithEmailAndPassword(
-        auth,
-        emailRef.current,
-        passwordRef.current
-      );
+    const result = await signIn(emailRef.current, passwordRef.current);
 
-      console.log(result);
-    } catch (error) {
-      console.log(error);
+    if (result.error) {
+      Alert.alert("Sign in", result.error);
     }
+
+    setLoading(false);
   };
 
   return (

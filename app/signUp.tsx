@@ -1,10 +1,8 @@
 import KeyboardView from "@/components/ui/KeyboardView";
 import Loading from "@/components/ui/Loading";
-import { auth, db } from "@/config/firebase";
+import useAuth from "@/hooks/useAuth";
 import { Feather, Octicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { doc, setDoc } from "firebase/firestore";
 import { useRef, useState } from "react";
 import {
   Alert,
@@ -24,27 +22,26 @@ export default function SignUp() {
   const emailRef = useRef("");
   const passwordRef = useRef("");
 
+  const { signUp } = useAuth();
+
   const handleSignUp = async () => {
+    setLoading(true);
+
     if (!usernameRef.current || !emailRef.current || !passwordRef.current) {
       Alert.alert("Sign up", "Please fill in all fields");
     }
 
-    try {
-      const result = await createUserWithEmailAndPassword(
-        auth,
-        emailRef.current,
-        passwordRef.current
-      );
+    const result = await signUp(
+      emailRef.current,
+      passwordRef.current,
+      usernameRef.current
+    );
 
-      console.log(result);
-
-      await setDoc(doc(db, "users", result.user.uid), {
-        username: usernameRef.current,
-        userId: result.user.uid,
-      });
-    } catch (error) {
-      console.log(error);
+    if (result.error) {
+      Alert.alert("Sign up", result.error);
     }
+
+    setLoading(false);
   };
 
   return (

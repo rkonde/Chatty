@@ -1,3 +1,4 @@
+import ChatRoom from "@/components/chatRoom/ChatRoom";
 import Home from "@/components/home/Home";
 import Header from "@/components/home/ui/Header";
 import SignIn from "@/components/signIn/signIn";
@@ -20,6 +21,11 @@ const Navigation = () => {
             name="Home"
             component={Home}
             options={{ header: () => <Header /> }}
+          />
+          <Stack.Screen
+            name="ChatRoom"
+            component={ChatRoom}
+            options={{ headerShown: false }}
           />
         </>
       ) : (

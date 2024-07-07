@@ -19,7 +19,11 @@ const ChatList = ({ users }: ChatListProps) => {
         keyExtractor={({ userId }) => userId}
         showsHorizontalScrollIndicator={false}
         renderItem={({ item, index }) => (
-          <ChatItem item={item} index={index} onPress={() => {}} />
+          <ChatItem
+            item={item}
+            index={index}
+            onPress={() => navigation.navigate("ChatRoom", item)}
+          />
         )}
       />
     </View>

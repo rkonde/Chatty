@@ -2,7 +2,7 @@ import Navigation from "@/navigation/Navigation";
 import { NavigationContainer } from "@react-navigation/native";
 import { SafeAreaView, StatusBar } from "react-native";
 
-import "../global.css";
+import "@/global.css";
 
 export default function StartingPage() {
   return (

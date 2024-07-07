@@ -1,7 +1,7 @@
-import SignIn from "@/app/signIn";
-import SignUp from "@/app/signUp";
 import Home from "@/components/home/Home";
 import Header from "@/components/home/ui/Header";
+import SignIn from "@/components/signIn/signIn";
+import SignUp from "@/components/signUp/signUp";
 import useAuth from "@/hooks/useAuth";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import * as React from "react";

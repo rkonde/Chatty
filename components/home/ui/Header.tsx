@@ -29,7 +29,7 @@ const Header = () => {
     <View className="flex-row justify-between items-center px-5 bg-indigo-400 p-6 rounded-b-3xl">
       <StatusBar
         backgroundColor={"rgb(129 140 248)"}
-        barStyle={"dark-content"}
+        barStyle={"light-content"}
       />
       <View>
         <Text className="text-3xl font-medium text-white">Chats</Text>

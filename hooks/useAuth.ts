@@ -6,7 +6,8 @@ import {
 } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { auth, db } from "../config/firebase";
+
+import { auth, db } from "@/config/firebase";
 
 export default function useAuth() {
   const [user, setUser] = useState<User | null>();

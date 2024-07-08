@@ -8,6 +8,7 @@ type KeyboardViewProps = {
 const KeyboardView = ({ children }: KeyboardViewProps) => {
   return (
     <KeyboardAvoidingView
+      keyboardVerticalOffset={Platform.OS === "ios" ? 40 : 0}
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       className="flex-1"
     >

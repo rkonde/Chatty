@@ -18,7 +18,7 @@ const ChatList = ({ users }: ChatListProps) => {
         contentContainerStyle={{ flex: 1, paddingVertical: 8 }}
         keyExtractor={({ userId }) => userId}
         showsHorizontalScrollIndicator={false}
-        renderItem={({ item, index }) => (
+        renderItem={({ item }) => (
           <ChatItem
             item={item}
             onPress={() => navigation.navigate("ChatRoom", item)}

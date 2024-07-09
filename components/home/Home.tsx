@@ -1,6 +1,6 @@
 import { getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { ActivityIndicator, View } from "react-native";
+import { ActivityIndicator, Text, View } from "react-native";
 
 import ChatList from "@/components/home/ui/ChatList";
 import { usersRef } from "@/config/firebase";
@@ -10,7 +10,7 @@ import { UserData } from "@/types/UserData";
 const Home = () => {
   const { user } = useAuth();
 
-  const [users, setUsers] = useState<UserData[]>([]);
+  const [users, setUsers] = useState<UserData[] | undefined>();
 
   useEffect(() => {
     getUsers();
@@ -34,9 +34,13 @@ const Home = () => {
 
   return (
     <View className="flex-1 bg-white">
-      {users.length === 0 ? (
+      {!users ? (
         <View className="flex-1 items-center justify-center">
           <ActivityIndicator size={"large"} color={"rgb(129 140 248)"} />
+        </View>
+      ) : users.length === 0 ? (
+        <View className="flex-1 items-center justify-center">
+          <Text className="font-medium text-neutral-500">No users found</Text>
         </View>
       ) : (
         <ChatList users={users} />

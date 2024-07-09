@@ -1,50 +1,75 @@
-# Welcome to your Expo app 👋
+# Chatty
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Chatty is a simple chat application that uses Firebase for authentication and handling chat messages.
+This app includes a sign in, sign up screen, a home screen displaying a list of chats, and a chat screen where users can view all messages.
 
-## Get started
+## Screenshots
 
-1. Install dependencies
+<p align="middle">
+   <h2>Authentication screens</h2>
+   <div style="display: flex; gap: 4px">
+      <img src="./screenshots/sign_in.png" width="270" height="585" />
+      <img src="./screenshots/sign_up.png" width="270" height="585" />    
+   </div>
+   
+   <br />
+   
+   <h2>Home screen</h2>
+   <div style="display: flex; gap: 4px">
+      <img src="./screenshots/chat_list_without_messages.png" width="270" height="585" />
+      <img src="./screenshots/chat_list_with_messages.png" width="270" height="585" />    
+   </div>
+   
+   <br />
 
-   ```bash
+   <h2>Chat screen</h2>
+   <img src="./screenshots/chat.png" width="270" height="585" />
+</p>
+
+## Features
+
+- **Sign In**: Users can sign in with their email and password.
+- **Sign Up**: New users can create an account by signing up with their email and password and provide a username.
+- **Home Screen**: Displays a list of chats with the last message from each chat and date-time when message was sent.
+- **Chat Screen**: Users can view all messages in a chat and send new messages.
+
+## Installation
+
+1. Clone the repository:
+
+   ```sh
+   git clone https://github.com/rkonde/QuizFlip.git
+   cd QuizFlip
+   ```
+
+2. Install dependencies:
+
+   ```sh
    npm install
    ```
 
-2. Start the app
+3. Setup Firebase:
 
-   ```bash
-    npx expo start
+- Go to Firebase Console
+- Create a new project
+- Enable Email/Password authentication in the Authentication section
+- Create a Firestore database
+
+4. Replace firebase configuration with your keys in .env file:
+
+   ```sh
+   const firebaseConfig = {
+      apiKey: process.env.EXPO_PUBLIC_FIREBASE_API_KEY,
+      authDomain: process.env.EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN,
+      projectId: process.env.EXPO_PUBLIC_FIREBASE_PROJECT_ID,
+      storageBucket: process.env.EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET,
+      messagingSenderId: process.env.EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+      appId: process.env.EXPO_PUBLIC_FIREBASE_APP_ID,
+   };
    ```
 
-In the output, you'll find options to open the app in a
+5. Run the app:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+   ```sh
+   npm start
+   ```

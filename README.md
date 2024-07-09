@@ -50,7 +50,7 @@ This app includes a sign in, sign up screen, a home screen displaying a list of 
 
 3. Setup Firebase:
 
-- Go to Firebase Console
+- Go to [Firebase Console](https://console.firebase.google.com/)
 - Create a new project
 - Enable Email/Password authentication in the Authentication section
 - Create a Firestore database

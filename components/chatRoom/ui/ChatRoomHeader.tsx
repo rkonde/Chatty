@@ -1,7 +1,9 @@
-import { UserData } from "@/components/home/Home";
-import { Entypo, Ionicons } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { StatusBar, Text, TouchableOpacity, View } from "react-native";
+
+import UserIcon from "@/components/ui/UserIcon";
+import { UserData } from "@/types/UserData";
 
 type ChatRoomtHeaderProps = {
   user: UserData;
@@ -18,19 +20,11 @@ const ChatRoomHeader = ({ user }: ChatRoomtHeaderProps) => {
           <Entypo name="chevron-left" size={36} color="#737373" />
         </TouchableOpacity>
         <View className="flex-row items-center gap-3">
-          <View className="bg-indigo-400 rounded-full h-12 w-12 items-center justify-center">
-            <Text className="text-3xl font-medium text-white">
-              {user.username?.at(0)?.toUpperCase()}
-            </Text>
-          </View>
+          <UserIcon username={user.username} />
           <Text className="text-neutral-700 font-medium text-2xl">
             {user.username}
           </Text>
         </View>
-      </View>
-      <View className="flex-row items-center gap-8">
-        <Ionicons name="call" size={24} color="#737373" />
-        <Ionicons name="videocam" size={24} color="#737373" />
       </View>
     </View>
   );

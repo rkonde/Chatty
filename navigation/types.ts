@@ -1,5 +1,6 @@
-import { UserData } from "@/components/home/Home";
 import type { NativeStackScreenProps } from "@react-navigation/native-stack";
+
+import { UserData } from "@/types/UserData";
 
 export type RootStackParamList = {
   SignIn: undefined;

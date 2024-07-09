@@ -1,8 +1,8 @@
 import { useNavigation } from "@react-navigation/native";
 import { FlatList, View } from "react-native";
 
-import { UserData } from "@/components/home/Home";
 import ChatItem from "@/components/home/ui/ChatItem";
+import { UserData } from "@/types/UserData";
 
 type ChatListProps = {
   users: UserData[];
@@ -21,7 +21,6 @@ const ChatList = ({ users }: ChatListProps) => {
         renderItem={({ item, index }) => (
           <ChatItem
             item={item}
-            index={index}
             onPress={() => navigation.navigate("ChatRoom", item)}
           />
         )}

@@ -26,7 +26,7 @@ export default function useAuth() {
       });
 
       return { success: true, data: result.user, error: null };
-    } catch (error) {
+    } catch (error: any) {
       const message = error.message;
 
       if (message.includes("(auth/invalid-email)")) {
@@ -46,7 +46,7 @@ export default function useAuth() {
       const result = await signInWithEmailAndPassword(auth, email, password);
 
       return { success: true, data: result.user, error: null };
-    } catch (error) {
+    } catch (error: any) {
       const message = error.message;
 
       if (message.includes("(auth/invalid-email)")) {

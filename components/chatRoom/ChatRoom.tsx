@@ -1,6 +1,3 @@
-import { db } from "@/config/firebase";
-import useAuth from "@/hooks/useAuth";
-import { RootStackScreenProps } from "@/navigation/types";
 import { Feather } from "@expo/vector-icons";
 import { useRoute } from "@react-navigation/native";
 import {
@@ -21,16 +18,14 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import KeyboardView from "../ui/KeyboardView";
-import ChatRoomHeader from "./ui/ChatRoomHeader";
-import MessageList from "./ui/MessageList";
 
-export type Message = {
-  userId: string;
-  text: string;
-  senderName: string;
-  createdAt: Timestamp;
-};
+import ChatRoomHeader from "@/components/chatRoom/ui/ChatRoomHeader";
+import MessageList from "@/components/chatRoom/ui/MessageList";
+import KeyboardView from "@/components/ui/KeyboardView";
+import { db } from "@/config/firebase";
+import useAuth from "@/hooks/useAuth";
+import { RootStackScreenProps } from "@/navigation/types";
+import { Message } from "@/types/Message";
 
 const ChatRoom = () => {
   const { params } = useRoute<RootStackScreenProps<"ChatRoom">["route"]>();
@@ -115,7 +110,7 @@ const ChatRoom = () => {
         });
 
         console.log("message id:", newDoc.id);
-      } catch (error) {
+      } catch (error: any) {
         Alert.alert("Message", error.message);
       }
     }

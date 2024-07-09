@@ -1,14 +1,11 @@
-import { usersRef } from "@/config/firebase";
-import useAuth from "@/hooks/useAuth";
 import { getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { ActivityIndicator, View } from "react-native";
-import ChatList from "./ui/ChatList";
 
-export type UserData = {
-  userId: string;
-  username: string;
-};
+import ChatList from "@/components/home/ui/ChatList";
+import { usersRef } from "@/config/firebase";
+import useAuth from "@/hooks/useAuth";
+import { UserData } from "@/types/UserData";
 
 const Home = () => {
   const { user } = useAuth();

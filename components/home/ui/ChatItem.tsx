@@ -1,9 +1,3 @@
-import { Text, TouchableOpacity, View } from "react-native";
-
-import { Message } from "@/components/chatRoom/ChatRoom";
-import { UserData } from "@/components/home/Home";
-import { db } from "@/config/firebase";
-import useAuth from "@/hooks/useAuth";
 import {
   collection,
   doc,
@@ -12,14 +6,20 @@ import {
   query,
 } from "firebase/firestore";
 import { useEffect, useState } from "react";
+import { Text, TouchableOpacity, View } from "react-native";
+
+import UserIcon from "@/components/ui/UserIcon";
+import { db } from "@/config/firebase";
+import useAuth from "@/hooks/useAuth";
+import { Message } from "@/types/Message";
+import { UserData } from "@/types/UserData";
 
 type ChatItemProps = {
   item: UserData;
-  index: number;
   onPress: () => void;
 };
 
-const ChatItem = ({ item, index, onPress }: ChatItemProps) => {
+const ChatItem = ({ item, onPress }: ChatItemProps) => {
   const { user } = useAuth();
 
   const [lastMessage, setLastMessage] = useState<Message>();
@@ -55,11 +55,7 @@ const ChatItem = ({ item, index, onPress }: ChatItemProps) => {
       onPress={onPress}
       className="p-2 flex-row justify-between mx-4 items-center gap-3 mb-4 pb-2 border-b border-b-neutral-200"
     >
-      <View className="bg-indigo-400 rounded-full h-12 w-12 items-center justify-center">
-        <Text className="text-3xl font-medium text-white">
-          {item.username?.at(0)?.toUpperCase()}
-        </Text>
-      </View>
+      <UserIcon username={item.username} />
       <View className="flex-1 gap-1">
         <View className="flex-row justify-between">
           <Text className="font-semibold text-neutral-800 text-lg">

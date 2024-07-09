@@ -1,6 +1,7 @@
 import { ScrollView } from "react-native";
-import { Message } from "../ChatRoom";
-import MessageItem from "./MessageItem";
+
+import MessageItem from "@/components/chatRoom/ui/MessageItem";
+import { Message } from "@/types/Message";
 
 type MessageListProps = {
   messages: Message[];

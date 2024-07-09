@@ -1,4 +1,3 @@
-import useAuth from "@/hooks/useAuth";
 import { Feather } from "@expo/vector-icons";
 import { useEffect, useState } from "react";
 import {
@@ -11,6 +10,9 @@ import {
   UIManager,
   View,
 } from "react-native";
+
+import UserIcon from "@/components/ui/UserIcon";
+import useAuth from "@/hooks/useAuth";
 
 const Header = () => {
   const [isMenuShown, setIsMenuShown] = useState(false);
@@ -41,11 +43,7 @@ const Header = () => {
           setIsMenuShown((isMenuShown) => !isMenuShown);
         }}
       >
-        <View className="bg-white rounded-full h-12 w-12 items-center justify-center">
-          <Text className="text-3xl font-medium text-indigo-400">
-            {user?.displayName?.at(0)?.toUpperCase()}
-          </Text>
-        </View>
+        <UserIcon username={user?.displayName!} inverseColors />
       </Pressable>
       {isMenuShown && (
         <TouchableOpacity

@@ -1,5 +1,6 @@
 import { Text, View } from "react-native";
-import { Message } from "../ChatRoom";
+
+import { Message } from "@/types/Message";
 
 type MessageItemProps = {
   message: Message;
